@@ -1,4 +1,5 @@
 import React from "react";
+// import { Container } from "react-bootstrap";
 import { Route } from "react-router-dom";
 
 import { EventList } from "./events/EventList";
@@ -9,7 +10,7 @@ export const ApplicationViews = () => {
     <>
       <EventProvider>
         <Route exact path="/">
-          <EventList />
+            <EventList />
         </Route>
       </EventProvider>
     </>

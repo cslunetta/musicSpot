@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { EventContext } from "./EventsProvider";
 import { EventCard } from "./EventCard";
+import "./event.css"
 
 export const EventList = () => {
   const { events, getEvents } = useContext(EventContext);
