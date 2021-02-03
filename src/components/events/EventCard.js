@@ -1,3 +1,5 @@
+/*  */
+
 import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -6,20 +8,28 @@ import "./event.css";
 import { Image } from "react-bootstrap";
 
 export const EventCard = ({ event }) => {
+  // Modal show and hide logic
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleHide = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  
+  // function that gives a string for the price of tickets
   const PriceRange = () => {
+    // Is the min and max price the same?
     if (
       event.priceRanges !== undefined &&
       event.priceRanges[0].min === event.priceRanges[0].max
     ) {
       return `Cost: $${event.priceRanges[0].min}`;
-    } else if (event.priceRanges !== undefined) {
+    }
+    // if the min and max are not the same show price range.
+    else if (event.priceRanges !== undefined) {
       return `Cost: $${event.priceRanges[0].min}-$${event.priceRanges[0].max}`;
-    } else {
+    } 
+    // if no price exists in data tell user to see details of the event.
+    else {
       return `Cost: See details for more info`;
     }
   };
@@ -42,9 +52,7 @@ export const EventCard = ({ event }) => {
             {event.dates.start?.localDate}
           </Card.Subtitle>
 
-          <Card.Title>
-            {event.name}
-          </Card.Title>
+          <Card.Title>{event.name}</Card.Title>
         </Card.Body>
         <Card.Footer>
           <Button variant="outline-primary" onClick={handleShow}>
@@ -53,7 +61,7 @@ export const EventCard = ({ event }) => {
         </Card.Footer>
       </Card>
 
-      <Modal scrollable centered show={show} onHide={handleClose}>
+      <Modal scrollable centered show={show} onHide={handleHide}>
         <Modal.Header>
           <Image
             fluid
@@ -73,9 +81,7 @@ export const EventCard = ({ event }) => {
 
           <Modal.Title>{event.name}</Modal.Title>
           <p>
-            <a href={event.url}>
-              More info and purchasing options
-            </a>
+            <a href={event.url}>More info and purchasing options</a>
           </p>
           <p>
             Genre:{" "}
@@ -88,7 +94,7 @@ export const EventCard = ({ event }) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="outline-primary">Save Event</Button>
-          <Button variant="danger" onClick={handleClose}>
+          <Button variant="danger" onClick={handleHide}>
             Close
           </Button>
         </Modal.Footer>
