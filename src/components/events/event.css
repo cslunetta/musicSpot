@@ -1,0 +1,17 @@
+.event {
+  margin: 10px;
+  width: 16px;
+}
+
+.events {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: scroll;
+  height: 44em;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+}
