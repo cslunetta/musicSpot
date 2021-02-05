@@ -22,16 +22,16 @@ export const TicketMasterProvider = (props) => {
 
   const getTMEvents = () => {
     return fetch(
-      `https://app.ticketmaster.com/discovery/v2/events?apikey=${apikey}&locale=*&startDateTime=${startDateTime}&endDateTime=${endDateTime}&sort=date,name,asc&city=Nashville&stateCode=tn&segmentId=KZFzniwnSyZfZ7v7nJ`
+      `https://app.ticketmaster.com/discovery/v2/events?apikey=${apikey}&locale=*&startDateTime=${startDateTime}&endDateTime=${endDateTime}&sort=date,name,asc&city=Nashville&stateCode=tn&segmentId=KZFzniwnSyZfZ7v7nJ&size=30`
     )
       .then((res) => res.json())
       .then(setTMEvents);
   };
 
-  const getTMEventById = (id) => {
+  const getTMEventById = (eventId) => {
     return fetch(
-      `https://app.ticketmaster.com/discovery/v2/events/${id}?apikey=${apikey}`
-    ).then((res) => res.json());
+      `https://app.ticketmaster.com/discovery/v2/events?apikey=${apikey}&id=${eventId}&locale=*`
+    ).then((res) => res.json())
   };
 
   return (

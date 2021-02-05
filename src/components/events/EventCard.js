@@ -1,11 +1,12 @@
-/*  */
-
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./event.css";
 import { Image } from "react-bootstrap";
+import { EventContext } from "./EventsProvider";
+import { UserEventContext } from "./Users_EventsProvider";
+import { SaveEventButton } from "./SaveEventBtn";
 
 export const EventCard = ({ event }) => {
   // Modal show and hide logic
@@ -14,7 +15,6 @@ export const EventCard = ({ event }) => {
   const handleHide = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  
   // function that gives a string for the price of tickets
   const PriceRange = () => {
     // Is the min and max price the same?
@@ -27,7 +27,7 @@ export const EventCard = ({ event }) => {
     // if the min and max are not the same show price range.
     else if (event.priceRanges !== undefined) {
       return `Cost: $${event.priceRanges[0].min}-$${event.priceRanges[0].max}`;
-    } 
+    }
     // if no price exists in data tell user to see details of the event.
     else {
       return `Cost: See details for more info`;
@@ -93,7 +93,7 @@ export const EventCard = ({ event }) => {
           <p>{event.info}</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-primary">Save Event</Button>
+          <SaveEventButton key={event.id} event={event} handleHide={handleHide}/>
           <Button variant="danger" onClick={handleHide}>
             Close
           </Button>

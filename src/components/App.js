@@ -5,6 +5,7 @@ import { NavBar } from "./nav/NavBar";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import "./App.css";
+import { Footer } from "./nav/Footer";
 
 export const App = () => (
   <>
@@ -13,8 +14,9 @@ export const App = () => (
         if (localStorage.getItem("current_user")) {
           return (
             <>
-              {/* <NavBar /> */}
+              <NavBar />
               <ApplicationViews />
+              <Footer />
             </>
           );
         } else {
