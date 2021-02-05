@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
+import { EventContext } from "./EventsProvider";
+import { UserEventContext } from "./Users_EventsProvider";
+import { useParams } from "react-router-dom";
+import { SaveEventButton } from "./SaveEventBtn";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Image from "react-bootstrap/Image";
 import "./event.css";
-import { Image } from "react-bootstrap";
-import { EventContext } from "./EventsProvider";
-import { UserEventContext } from "./Users_EventsProvider";
-import { SaveEventButton } from "./SaveEventBtn";
 
 export const EventCard = ({ event }) => {
   // Modal show and hide logic

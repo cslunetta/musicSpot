@@ -21,12 +21,19 @@ export const UserEventsProvider = (props) => {
     }).then(getUsersEvents);
   };
 
+  const deleteUsersEvents = (eventId) => {
+    return fetch(`http://localhost:8088/users/${eventId}`, {
+      method: "DELETE",
+    }).then(getUsersEvents);
+  };
+
   return (
     <UserEventContext.Provider
       value={{
         usersEvents,
         getUsersEvents,
         addUsersEvent,
+        deleteUsersEvents,
       }}
     >
       {props.children}
