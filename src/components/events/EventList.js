@@ -15,7 +15,6 @@ export const EventList = () => {
 
   return (
     <>
-      <h2>Events</h2>
       <div className="events">
         {console.log("EventList: Render", tmEvents)}
         {tmEvents._embedded?.events?.map((event) => {
