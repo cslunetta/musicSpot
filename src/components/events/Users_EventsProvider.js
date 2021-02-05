@@ -8,7 +8,10 @@ export const UserEventsProvider = (props) => {
   const getUsersEvents = () => {
     return fetch("http://localhost:8088/users_events?_expand=event")
       .then((res) => res.json())
-      .then(setUsersEvents);
+      .then((usersEvents) => {
+        setUsersEvents(usersEvents);
+        return usersEvents;
+      });
   };
 
   const addUsersEvent = (event) => {
