@@ -13,7 +13,7 @@ export const App = () => (
         if (localStorage.getItem("current_user")) {
           return (
             <>
-              {/* <NavBar /> */}
+              <NavBar />
               <ApplicationViews />
             </>
           );
