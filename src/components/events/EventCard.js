@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react";
-import { EventContext } from "./EventsProvider";
-import { UserEventContext } from "./Users_EventsProvider";
-import { useParams } from "react-router-dom";
-import { SaveEventButton } from "./SaveEventBtn";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Image from "react-bootstrap/Image";
 import "./event.css";
+import { SaveEventButton } from "./SaveEventBtn";
+import { useHistory, useParams } from "react-router-dom";
 
 export const EventCard = ({ event }) => {
+  const { interested_events } = useParams();
+  const history = useHistory();
   // Modal show and hide logic
   const [show, setShow] = useState(false);
 
@@ -37,7 +37,7 @@ export const EventCard = ({ event }) => {
 
   return (
     <>
-      <Card style={{ width: "25rem" }} className="event">
+      <Card style={{ width: "20rem" }} className="event">
         <Card.Header>
           <Card.Img
             variant="top"
@@ -56,9 +56,23 @@ export const EventCard = ({ event }) => {
           <Card.Title>{event.name}</Card.Title>
         </Card.Body>
         <Card.Footer>
-          <Button variant="outline-primary" onClick={handleShow}>
-            Interested
-          </Button>
+          {interested_events ? (
+            <>
+              <Button
+                variant="outline-primary"
+                onClick={() => history.push(`/interested_events/${event.id}`)}
+              >
+                Details
+              </Button>
+              <Button variant="danger" onClick="">
+                Delete
+              </Button>
+            </>
+          ) : (
+            <Button variant="outline-primary" onClick={handleShow}>
+              Interested
+            </Button>
+          )}
         </Card.Footer>
       </Card>
 
@@ -94,7 +108,11 @@ export const EventCard = ({ event }) => {
           <p>{event.info}</p>
         </Modal.Body>
         <Modal.Footer>
-          <SaveEventButton key={event.id} event={event} handleHide={handleHide}/>
+          <SaveEventButton
+            key={event.id}
+            event={event}
+            handleHide={handleHide}
+          />
           <Button variant="danger" onClick={handleHide}>
             Close
           </Button>

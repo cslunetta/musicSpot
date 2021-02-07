@@ -8,7 +8,10 @@ export const UserEventsProvider = (props) => {
   const getUsersEvents = () => {
     return fetch("http://localhost:8088/users_events?_expand=event")
       .then((res) => res.json())
-      .then(setUsersEvents);
+      .then((usersEvents) => {
+        setUsersEvents(usersEvents);
+        return usersEvents;
+      });
   };
 
   const addUsersEvent = (event) => {
@@ -21,19 +24,12 @@ export const UserEventsProvider = (props) => {
     }).then(getUsersEvents);
   };
 
-  const deleteUsersEvents = (eventId) => {
-    return fetch(`http://localhost:8088/users/${eventId}`, {
-      method: "DELETE",
-    }).then(getUsersEvents);
-  };
-
   return (
     <UserEventContext.Provider
       value={{
         usersEvents,
         getUsersEvents,
         addUsersEvent,
-        deleteUsersEvents,
       }}
     >
       {props.children}
