@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { UserEventContext } from "../Users_EventsProvider";
+import { UserEventContext } from "./Users_EventsProvider";
 import { TicketMasterContext } from "../TicketMasterProvider";
 import { EventCard } from "../EventCard";
 import "../event.css";
@@ -33,7 +33,6 @@ export const InterestedEvents = () => {
 
   return (
     <>
-      <h2>Events</h2>
       <div className="events">
         {console.log("EventList: Render", tmEvents)}
         {tmEvents._embedded?.events?.map((event) => {

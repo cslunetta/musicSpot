@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { EventContext } from "./EventsProvider";
-import { UserEventContext } from "./Users_EventsProvider";
+import { UserEventContext } from "./InterestedEvents/Users_EventsProvider";
 import Button from "react-bootstrap/Button";
 
 export const SaveEventButton = ({ event, handleHide }) => {
