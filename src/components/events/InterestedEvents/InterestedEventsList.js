@@ -3,6 +3,7 @@ import { UserEventContext } from "./Users_EventsProvider";
 import { TicketMasterContext } from "../TicketMasterProvider";
 import { EventCard } from "../EventCard";
 import "../event.css";
+import userEvent from "@testing-library/user-event";
 
 export const InterestedEvents = () => {
   const { getUsersEvents } = useContext(UserEventContext);
@@ -27,7 +28,6 @@ export const InterestedEvents = () => {
       })
       .then((response) => {
         console.log(response);
-        
       });
   }, []);
 
@@ -36,7 +36,7 @@ export const InterestedEvents = () => {
       <div className="events">
         {console.log("EventList: Render", tmEvents)}
         {tmEvents._embedded?.events?.map((event) => {
-          return <EventCard key={event.id} event={event} />;
+          return <EventCard key={event.id} event={event} userEvent={userEvent.id}/>;
         })}
       </div>
     </>

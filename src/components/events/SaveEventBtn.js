@@ -12,7 +12,7 @@ export const SaveEventButton = ({ event, handleHide }) => {
       .then((res) => res.json())
       .then((i) => (i.length ? i[0] : false));
   };
-
+  
   const handleSaveEvent = () => {
     existingEventCheck().then((exists) => {
       if (exists) {
@@ -36,6 +36,7 @@ export const SaveEventButton = ({ event, handleHide }) => {
       }
     });
   };
+  
   return (
     <Button
       variant="outline-primary"

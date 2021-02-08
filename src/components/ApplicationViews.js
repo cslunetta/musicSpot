@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { EventList } from "./events/EventList";
 import { TicketMasterProvider } from "./events/TicketMasterProvider";
 import { EventsProvider } from "./events/EventsProvider";
-import { UserEventsProvider } from "./events/Users_EventsProvider";
+import { UserEventsProvider } from "./events/InterestedEvents/Users_EventsProvider";
 import { InterestedEvents } from "./events/InterestedEvents/InterestedEventsList";
 
 export const ApplicationViews = () => {
@@ -19,15 +19,15 @@ export const ApplicationViews = () => {
         </EventsProvider>
       </TicketMasterProvider>
 
-      
-        <UserEventsProvider>
-          <TicketMasterProvider>
-            <Route path="/interested_events">
+      <UserEventsProvider>
+        <TicketMasterProvider>
+          <EventsProvider>
+            <Route path="/:interested_events">
               <InterestedEvents />
             </Route>
-          </TicketMasterProvider>
-        </UserEventsProvider>
-      
+          </EventsProvider>
+        </TicketMasterProvider>
+      </UserEventsProvider>
 
       <EventsProvider>
         <TicketMasterProvider>

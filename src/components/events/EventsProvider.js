@@ -8,7 +8,10 @@ export const EventsProvider = (props) => {
   const getEvents = () => {
     return fetch("http://localhost:8088/events")
       .then((res) => res.json())
-      .then(setEvents);
+      .then((events) => {
+        setEvents(events);
+        return events;
+      });
   };
 
   const addEvent = (event) => {

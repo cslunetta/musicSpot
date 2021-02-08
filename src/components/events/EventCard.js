@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Image from "react-bootstrap/Image";
 import "./event.css";
-import { Image } from "react-bootstrap";
 import { SaveEventButton } from "./SaveEventBtn";
 import { useHistory, useParams } from "react-router-dom";
+import { DeleteUserEventButton } from "./DeleteEventBtn";
 
 export const EventCard = ({ event }) => {
   const { interested_events } = useParams();
@@ -64,9 +65,9 @@ export const EventCard = ({ event }) => {
               >
                 Details
               </Button>
-              <Button variant="danger" onClick="">
-                Delete
-              </Button>
+              <DeleteUserEventButton
+              key={event.id}
+              event={event} />
             </>
           ) : (
             <Button variant="outline-primary" onClick={handleShow}>
