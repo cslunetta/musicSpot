@@ -19,15 +19,15 @@ export const ApplicationViews = () => {
         </EventsProvider>
       </TicketMasterProvider>
 
-      
-        <UserEventsProvider>
-          <TicketMasterProvider>
+      <UserEventsProvider>
+        <TicketMasterProvider>
+          <EventsProvider>
             <Route path="/:interested_events">
               <InterestedEvents />
             </Route>
-          </TicketMasterProvider>
-        </UserEventsProvider>
-      
+          </EventsProvider>
+        </TicketMasterProvider>
+      </UserEventsProvider>
 
       <EventsProvider>
         <TicketMasterProvider>

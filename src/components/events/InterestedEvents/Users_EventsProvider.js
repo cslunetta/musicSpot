@@ -1,3 +1,4 @@
+import { get } from "jquery";
 import { createContext, useState } from "react";
 
 export const UserEventContext = createContext();
@@ -24,12 +25,19 @@ export const UserEventsProvider = (props) => {
     }).then(getUsersEvents);
   };
 
+  const deleteUsersEvent = (eventId) => {
+    return fetch(`http://localhost:8088/users_events/${eventId}`, {
+      method: "DELETE",
+    }).then(getUsersEvents);
+  };
+
   return (
     <UserEventContext.Provider
       value={{
         usersEvents,
         getUsersEvents,
         addUsersEvent,
+        deleteUsersEvent,
       }}
     >
       {props.children}
