@@ -10,7 +10,7 @@ export const DeleteUserEventButton = ({ event }) => {
   );
   const { getEvents } = useContext(EventContext);
 
-    const history = useHistory();
+  const history = useHistory();
 
   // filter users events first by the current user then delete event related to it
   const handleDeleteUserEvent = () => {
@@ -28,7 +28,9 @@ export const DeleteUserEventButton = ({ event }) => {
             response === userEvent.eventId
         );
 
-        deleteUsersEvent(foundUserEvent.id).then(history.push("/interested_events"));
+        deleteUsersEvent(foundUserEvent.id).then(() =>
+          history.push("/interested_events")
+        );
       });
   };
 
