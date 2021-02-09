@@ -5,6 +5,7 @@ import { TicketMasterProvider } from "./events/TicketMasterProvider";
 import { EventsProvider } from "./events/EventsProvider";
 import { UserEventsProvider } from "./events/InterestedEvents/Users_EventsProvider";
 import { InterestedEvents } from "./events/InterestedEvents/InterestedEventsList";
+import { EventDetail } from "./events/InterestedEvents/EventDetail";
 
 export const ApplicationViews = () => {
   return (
@@ -22,18 +23,18 @@ export const ApplicationViews = () => {
       <UserEventsProvider>
         <TicketMasterProvider>
           <EventsProvider>
-            <Route path="/:interested_events">
+            <Route exact path="/:interested_events">
               <InterestedEvents />
             </Route>
           </EventsProvider>
         </TicketMasterProvider>
       </UserEventsProvider>
 
-      <EventsProvider>
-        <TicketMasterProvider>
-          <Route path="/interested_events/details/:eventId(\d+)"></Route>
-        </TicketMasterProvider>
-      </EventsProvider>
+      <TicketMasterProvider>
+        <Route exact path="/interested_events/details/:ticketmasterId">
+          <EventDetail />
+        </Route>
+      </TicketMasterProvider>
     </>
   );
 };
