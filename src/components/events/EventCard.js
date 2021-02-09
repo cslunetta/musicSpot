@@ -60,8 +60,12 @@ export const EventCard = ({ event }) => {
           {interested_events ? (
             <>
               <Button
+                // TODO hidden until details page completed
+                hidden
                 variant="outline-primary"
-                onClick={() => history.push(`/interested_events/${event.id}`)}
+                onClick={() =>
+                  history.push(`/interested_events/details/${event.id}`)
+                }
               >
                 Details
               </Button>

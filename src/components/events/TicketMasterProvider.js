@@ -30,7 +30,7 @@ export const TicketMasterProvider = (props) => {
 
   const getTMEventById = (eventId) => {
     return fetch(
-      `https://app.ticketmaster.com/discovery/v2/events?apikey=${apikey}&id=${eventId}&locale=*`
+      `https://app.ticketmaster.com/discovery/v2/events?apikey=${apikey}&id=${eventId}&locale=*&sort=date,name,asc`
     ).then((res) => res.json()
     .then(setTMEvents))
   };

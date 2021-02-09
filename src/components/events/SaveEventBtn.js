@@ -12,14 +12,14 @@ export const SaveEventButton = ({ event, handleHide }) => {
       .then((res) => res.json())
       .then((i) => (i.length ? i[0] : false));
   };
-  
+
   const handleSaveEvent = () => {
     existingEventCheck().then((exists) => {
       if (exists) {
         addUsersEvent({
           userId: parseInt(localStorage.getItem("current_user")),
           eventId: exists.id,
-        });
+        }).then(() => handleHide());
       } else {
         addEvent({
           ticketmasterId: event.id,
@@ -36,7 +36,7 @@ export const SaveEventButton = ({ event, handleHide }) => {
       }
     });
   };
-  
+
   return (
     <Button
       variant="outline-primary"
