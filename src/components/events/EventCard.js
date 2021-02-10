@@ -8,7 +8,7 @@ import { SaveEventButton } from "./SaveEventBtn";
 import { useHistory, useParams } from "react-router-dom";
 import { DeleteUserEventButton } from "./DeleteEventBtn";
 
-export const EventCard = ({ event }) => {
+export const EventCard = ({ event, handleDeleteUserEvent }) => {
   const { interested_events } = useParams();
   const history = useHistory();
   // Modal show and hide logic
@@ -71,7 +71,8 @@ export const EventCard = ({ event }) => {
               </Button>
               <DeleteUserEventButton
               key={event.id}
-              event={event} />
+              event={event} 
+              handleDeleteUserEvent={handleDeleteUserEvent} />
             </>
           ) : (
             <Button variant="outline-primary" onClick={handleShow}>
