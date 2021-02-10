@@ -55,7 +55,7 @@ export const InterestedEvents = () => {
 
   useEffect(() => {
     render();
-  });
+  }, []);
 
   return (
     <>
