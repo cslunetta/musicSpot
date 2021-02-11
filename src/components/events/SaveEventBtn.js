@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { EventContext } from "./EventsProvider";
 import { UserEventContext } from "./InterestedEvents/Users_EventsProvider";
 import Button from "react-bootstrap/Button";

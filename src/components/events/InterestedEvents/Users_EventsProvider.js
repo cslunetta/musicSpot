@@ -15,6 +15,16 @@ export const UserEventsProvider = (props) => {
       });
   };
 
+  const getUsersEventsByUserId = () => {
+    const currentUser = parseInt(localStorage.getItem("current_user"))
+    return fetch(`http://localhost:8088/users_events?_expand=event&userId=${currentUser}`)
+      .then((res) => res.json())
+      .then((usersEvents) => {
+        setUsersEvents(usersEvents);
+        return usersEvents;
+      });
+  };
+
   const addUsersEvent = (event) => {
     return fetch("http://localhost:8088/users_events", {
       method: "POST",
@@ -36,6 +46,7 @@ export const UserEventsProvider = (props) => {
       value={{
         usersEvents,
         getUsersEvents,
+        getUsersEventsByUserId,
         addUsersEvent,
         deleteUsersEvent,
       }}

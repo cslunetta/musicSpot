@@ -3,20 +3,24 @@ import { UserEventContext } from "./Users_EventsProvider";
 import { TicketMasterContext } from "../TicketMasterProvider";
 import { EventCard } from "../EventCard";
 import "../event.css";
-import userEvent from "@testing-library/user-event";
 import { EventContext } from "../EventsProvider";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 
 export const InterestedEvents = () => {
-  const { usersEvents, getUsersEvents, deleteUsersEvent } = useContext(
+  const { usersEvents, getUsersEventsByUserId, deleteUsersEvent } = useContext(
     UserEventContext
   );
   const { tmEvents, getTMEventById } = useContext(TicketMasterContext);
   const { getEvents } = useContext(EventContext);
 
-  const render = () => {
+  const history = useHistory()
+
+  const handleData = () => {
     console.log("EventList: useEffect - getEvents");
-    getUsersEvents()
-      .then((usersEvents) => {
+    getUsersEventsByUserId().then((usersEvents) => {
+      if (usersEvents.length) {
         return getTMEventById(
           usersEvents
             .filter(
@@ -27,16 +31,13 @@ export const InterestedEvents = () => {
             .map((event) => {
               return event.event.ticketmasterId;
             })
-            .join("&id=")
         );
-      })
-      .then((response) => {
-        console.log(response);
-      });
+      }
+    });
   };
 
   const handleDeleteUserEvent = (event) => {
-    getUsersEvents()
+    getUsersEventsByUserId()
       .then(getEvents)
       // Get the eventId based on the ticketmaster id
       .then((e) => e.find((e) => e.ticketmasterId === event.id).id)
@@ -49,29 +50,50 @@ export const InterestedEvents = () => {
             response === userEvent.eventId
         );
 
-        deleteUsersEvent(foundUserEvent.id).then(render);
+        deleteUsersEvent(foundUserEvent.id).then(handleData);
       });
   };
 
   useEffect(() => {
-    render();
+    handleData();
   }, []);
 
   return (
     <>
-      <div className="events">
-        {console.log("EventList: Render", tmEvents)}
-        {tmEvents._embedded?.events?.map((event) => {
-          return (
-            <EventCard
-              key={event.id}
-              event={event}
-              userEvent={userEvent.id}
-              handleDeleteUserEvent={handleDeleteUserEvent}
-            />
-          );
-        })}
-      </div>
+      {usersEvents.length ? (
+        <>
+          <div className="events">
+            {console.log("EventList: Render", tmEvents)}
+            {tmEvents._embedded?.events?.map((event) => {
+              return (
+                <EventCard
+                  key={event.id}
+                  event={event}
+                  handleDeleteUserEvent={handleDeleteUserEvent}
+                />
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <Card style={{ width: "20rem" }}>
+          <Card.Body>
+            <Card.Title>
+              You seem like you are going to be bored for the unforseeable
+              future...
+            </Card.Title>
+            <Card.Text>Looks like you forgot to add some events you would be interested in going too. Go back to start having some fun!</Card.Text>
+            <Button
+                variant="outline-primary"
+                onClick={() =>
+                  history.push("/")
+                }
+              >
+                Go Back
+              </Button>
+          </Card.Body>
+        </Card>
+      )}
     </>
   );
 };

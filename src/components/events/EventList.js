@@ -4,9 +4,7 @@ import { EventCard } from "./EventCard";
 import "./event.css";
 
 export const EventList = () => {
-  const { tmEvents, getTMEvents } = useContext(
-    TicketMasterContext
-  );
+  const { tmEvents, getTMEvents } = useContext(TicketMasterContext);
 
   useEffect(() => {
     console.log("EventList: useEffect - getEvents");

@@ -14,8 +14,9 @@ export const EventCard = ({ event, handleDeleteUserEvent }) => {
   // Modal show and hide logic
   const [show, setShow] = useState(false);
 
-  const handleHide = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const toggleModal = () => {
+    setShow(!show)
+  }
 
   // function that gives a string for the price of tickets
   const PriceRange = () => {
@@ -53,6 +54,7 @@ export const EventCard = ({ event, handleDeleteUserEvent }) => {
           <Card.Subtitle className="mb-2 text-muted">
             {event.dates.start?.localDate}
           </Card.Subtitle>
+        <h6>{event._embedded?.venues[0].name}</h6>
 
           <Card.Title>{event.name}</Card.Title>
         </Card.Body>
@@ -75,14 +77,14 @@ export const EventCard = ({ event, handleDeleteUserEvent }) => {
               handleDeleteUserEvent={handleDeleteUserEvent} />
             </>
           ) : (
-            <Button variant="outline-primary" onClick={handleShow}>
+            <Button variant="outline-primary" onClick={toggleModal}>
               Interested
             </Button>
           )}
         </Card.Footer>
       </Card>
 
-      <Modal scrollable centered show={show} onHide={handleHide}>
+      <Modal scrollable centered show={show} onHide={toggleModal}>
         <Modal.Header>
           <Image
             fluid
@@ -98,7 +100,7 @@ export const EventCard = ({ event, handleDeleteUserEvent }) => {
           <h6 className="mb-2 text-muted">
             <PriceRange />
           </h6>
-          <h6>{event._embedded.venues[0].name}</h6>
+          <h6>{event._embedded?.venues[0].name}</h6>
 
           <Modal.Title>{event.name}</Modal.Title>
           <p>
@@ -107,7 +109,7 @@ export const EventCard = ({ event, handleDeleteUserEvent }) => {
           <p>
             Genre:{" "}
             {
-              event.classifications.find(({ primary }) => primary === true)
+              event.classifications?.find(({ primary }) => primary === true)
                 .genre.name
             }
           </p>
@@ -117,9 +119,9 @@ export const EventCard = ({ event, handleDeleteUserEvent }) => {
           <SaveEventButton
             key={event.id}
             event={event}
-            handleHide={handleHide}
+            handleHide={toggleModal}
           />
-          <Button variant="danger" onClick={handleHide}>
+          <Button variant="danger" onClick={toggleModal}>
             Close
           </Button>
         </Modal.Footer>
