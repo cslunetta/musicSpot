@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserEventContext } from "./Users_EventsProvider";
 import { TicketMasterContext } from "../TicketMasterProvider";
 import { EventCard } from "../EventCard";
@@ -15,10 +15,9 @@ export const InterestedEvents = () => {
   const { tmEvents, getTMEventById } = useContext(TicketMasterContext);
   const { getEvents } = useContext(EventContext);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleData = () => {
-    console.log("EventList: useEffect - getEvents");
     getUsersEventsByUserId().then((usersEvents) => {
       if (usersEvents.length) {
         return getTMEventById(
@@ -63,7 +62,6 @@ export const InterestedEvents = () => {
       {usersEvents.length ? (
         <>
           <div className="events">
-            {console.log("EventList: Render", tmEvents)}
             {tmEvents._embedded?.events?.map((event) => {
               return (
                 <EventCard
@@ -82,15 +80,13 @@ export const InterestedEvents = () => {
               You seem like you are going to be bored for the unforseeable
               future...
             </Card.Title>
-            <Card.Text>Looks like you forgot to add some events you would be interested in going too. Go back to start having some fun!</Card.Text>
-            <Button
-                variant="outline-primary"
-                onClick={() =>
-                  history.push("/")
-                }
-              >
-                Go Back
-              </Button>
+            <Card.Text>
+              Looks like you forgot to add some events you would be interested
+              in going too. Go back to start having some fun!
+            </Card.Text>
+            <Button variant="outline-primary" onClick={() => history.push("/")}>
+              Go Back
+            </Button>
           </Card.Body>
         </Card>
       )}

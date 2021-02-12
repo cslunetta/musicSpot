@@ -11,15 +11,14 @@ export const Footer = (props) => {
       expand="sm"
       fixed="bottom"
     >
-      {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" /> */}
-      <Navbar.Brand href="https://www.ticketmaster.com/">
+      <Navbar.Brand href="https://www.ticketmaster.com/" target="_blank" rel="noreferrer">
         <img
           src={ticketmasterLogo}
           className="d-inline-block align-top"
           alt="Ticketmaster Logo"
         />
       </Navbar.Brand>
-      <Navbar.Brand href="https://github.com/cslunetta/musicSpot">
+      <Navbar.Brand href="https://github.com/cslunetta/musicSpot" target="_blank" rel="noreferrer">
         <img
           src={githubLogo}
           width="30"

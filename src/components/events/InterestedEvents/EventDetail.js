@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import Card from "react-bootstrap/Card";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { TicketMasterContext } from "../TicketMasterProvider";
 
 export const EventDetail = () => {
   const { getTMEventById } = useContext(TicketMasterContext);
 
-  const [tmEvents, setTMEvents] = useState([]);
+  const [setTMEvents] = useState([]);
 
   const { ticketmasterId } = useParams();
 
@@ -17,11 +16,5 @@ export const EventDetail = () => {
     });
   }, []);
 
-  const history = useHistory();
-
-  return (
-    <>
-      
-    </>
-  );
+  return <></>;
 };

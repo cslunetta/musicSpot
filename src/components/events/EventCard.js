@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -71,6 +71,9 @@ export const EventCard = ({ event, handleDeleteUserEvent }) => {
               >
                 Details
               </Button>
+              <Button variant="outline-primary" onClick={toggleModal}>
+              details
+            </Button>
               <DeleteUserEventButton
               key={event.id}
               event={event} 
@@ -104,7 +107,7 @@ export const EventCard = ({ event, handleDeleteUserEvent }) => {
 
           <Modal.Title>{event.name}</Modal.Title>
           <p>
-            <a href={event.url}>More info and purchasing options</a>
+            <a href={event.url} target="_blank" rel="noreferrer">More info and purchasing options</a>
           </p>
           <p>
             Genre:{" "}

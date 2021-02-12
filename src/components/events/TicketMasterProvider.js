@@ -6,14 +6,12 @@ import { apikey } from "../../settings";
 let startDateTime = (new Date()).toJSON();
 startDateTime = startDateTime.substring(0, startDateTime.length-5) + "Z"
 
-console.log(startDateTime);
 
 let endDate = new Date();
 endDate.setDate(endDate.getDate() + 30);
 
 let endDateTime = (endDate).toJSON();
 endDateTime = endDateTime.substring(0, endDateTime.length-5) + "Z"
-console.log(endDateTime);
 
 export const TicketMasterContext = createContext();
 
@@ -31,8 +29,7 @@ export const TicketMasterProvider = (props) => {
   const getTMEventById = (eventId) => {
     return fetch(
       `https://app.ticketmaster.com/discovery/v2/events?apikey=${apikey}&id=${eventId}&locale=*&sort=date,name,asc`
-    ).then((res) => res.json()
-    .then(setTMEvents))
+    ).then((res) => res.json().then(setTMEvents));
   };
 
   return (

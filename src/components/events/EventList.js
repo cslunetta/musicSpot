@@ -7,14 +7,12 @@ export const EventList = () => {
   const { tmEvents, getTMEvents } = useContext(TicketMasterContext);
 
   useEffect(() => {
-    console.log("EventList: useEffect - getEvents");
     getTMEvents();
   }, []);
 
   return (
     <>
       <div className="events">
-        {console.log("EventList: Render", tmEvents)}
         {tmEvents._embedded?.events?.map((event) => {
           return <EventCard key={event.id} event={event} />;
         })}
