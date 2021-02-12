@@ -72,7 +72,7 @@ export const EventCard = ({ event, handleDeleteUserEvent }) => {
                 Details
               </Button>
               <Button variant="outline-primary" onClick={toggleModal}>
-              details
+              Details
             </Button>
               <DeleteUserEventButton
               key={event.id}
@@ -119,11 +119,22 @@ export const EventCard = ({ event, handleDeleteUserEvent }) => {
           <p>{event.info}</p>
         </Modal.Body>
         <Modal.Footer>
-          <SaveEventButton
+
+        {interested_events ? (
+            <>
+              
+            </>
+          ) : (
+            <>
+            <SaveEventButton
             key={event.id}
             event={event}
             handleHide={toggleModal}
           />
+          </>
+          )}
+
+          
           <Button variant="danger" onClick={toggleModal}>
             Close
           </Button>
