@@ -1,3 +1,16 @@
+# The Music Spot
+Ever want to get out and have a night out on the town and don’t know what's going on? Sometimes it's challenging to keep up with what events are coming up. The Music Spot is for those music loving show goers to be able to find local events coming up near them.
+
+## Table of Contents
+  * [Project Requirements and Features List](#project-requirements-and-features-list)
+  * [Technologies Used](#technologies-used)
+  * [Installing and Launching The Music Spot](#instructions-for-installing-the-music-spot)
+  * [Appendix 1: Planning Documentation](#appendix-1-planning-documentation)
+    * [Entity Relationship Diagrams](#entity-relationship-diagram)
+    * [Wireframes](#wireframes)
+  * [Appendix 2: Set Up Instructions](#appendix-2-set-up-instructions)
+
+----
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
