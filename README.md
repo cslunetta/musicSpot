@@ -1,10 +1,12 @@
-# Getting Started with Create React App
+# MusicSpot
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**_MusicSpot_** is a single page application designed to help find the perfect music events happening locally.
 
-## Available Scripts
+## Setup
 
-In the project directory, you can run:
+### Clone the project
+
+From a terminal window, in any directory you'd like, run: `git clone git@github.com:cslunetta/musicSpot.git`
 
 ### `npm start`
 
@@ -13,6 +15,46 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+---
+
+### Built with
+
+-   [React](https://reactjs.org/)
+-   [.NET 5](https://dotnet.microsoft.com/)
+-   React - Bootstrap
+-   Bootstrap
+-   CSS
+
+### Design and Development
+
+-   [sketchboard.me](https://sketchboard.me/)
+-   [DbDiagram.io](https://dbdiagram.io/)
+<!-- 
+---
+
+### Entity Relationship Diagram (ERD) & Mockups
+
+<img src="./README_Images/GearShare_ERD.png"></img>
+---
+
+<img src="./README_Images/WireFrame_GearLists.png"></img>
+<img src="./README_Images/WireFrame_GearDetails.png"></img>
+<img src="./README_Images/WireFrame_GearRequests.png"></img>
+<img src="./README_Images/WireFrame_GearForm.png" width="45%"></img>
+<img src="./README_Images/WireFrame_MyProfile.png" width="54%"></img>
+<img src="./README_Images/WireFrame_LoginRegister.png"></img> -->
+
+
+<!-- # Getting Started with Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+
 
 ### `npm test`
 
@@ -68,3 +110,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ -->
